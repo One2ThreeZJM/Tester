@@ -1,8 +1,8 @@
 __author__ = 'ZhangJianMing'
-
-from appium import webdriver
+import sys
+sys.path.append("..")
 from selenium.webdriver.common.by import By
-from BasePage import Base
+from PO.BasePage import Base
 import time
 
 class LoginPage(Base):
@@ -32,19 +32,21 @@ class LoginPage(Base):
 		self.clickBtn(self.btn_toggle_loc)
 		self.clickBtn(self.btn_switch_loc)
 		self.clickBtn(self.btn_login_loc)
-		self.quit()
+		# 测试登录判断：输入不符合逻辑的account，能不能按登录键
+		# 输入账号、密码。是否可以跳转。判断页面是否跳转、或者按钮能不能按
+		# self.quit()
 
-desired_caps = {}
-desired_caps['device'] = 'android'
-desired_caps['platformName'] = 'android'
-desired_caps['platformVersion'] = '6.0.1'
-desired_caps['deviceName'] = '255f4e4c'
-desired_caps['appPackage'] = 'com.yidejia.app.mall'
-desired_caps['appActivity'] = 'com.yidejia.app.mall.ui.WelcomeActivity'
-# desired_caps['appPackage'] = 'com.yidejia.teacher'
-# desired_caps['appActivity'] = '.ui.MainActivity'	
-driver = webdriver.Remote('http://127.0.0.1:4723/wd/hub',desired_caps)
+# desired_caps = {}
+# desired_caps['device'] = 'android'
+# desired_caps['platformName'] = 'android'
+# desired_caps['platformVersion'] = '6.0.1'
+# desired_caps['deviceName'] = '255f4e4c'
+# desired_caps['appPackage'] = 'com.yidejia.app.mall'
+# desired_caps['appActivity'] = 'com.yidejia.app.mall.ui.WelcomeActivity'
+# # desired_caps['appPackage'] = 'com.yidejia.teacher'
+# # desired_caps['appActivity'] = '.ui.MainActivity'	
+# driver = webdriver.Remote('http://127.0.0.1:4723/wd/hub',desired_caps)
 
-lp = LoginPage(driver)
-time.sleep(5)
-lp.login('1000000000','222222')
+# lp = LoginPage(driver)
+# time.sleep(5)
+# lp.login('1000000000','222222')
