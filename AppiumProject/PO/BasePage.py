@@ -7,7 +7,6 @@ from common import KeyValue
 from appium import webdriver
 
 class Base(object):
-	# test
 
 	def __init__(self, appium_driver):
 		self.driver = appium_driver
