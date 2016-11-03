@@ -1,6 +1,10 @@
 __author__ = 'ZhangJianMing'
 
+import sys
+sys.path.append("..")
 from selenium.webdriver.support.ui import WebDriverWait
+from common import KeyValue
+# print(KeyValue.KEYCODE_BACK)
 
 class Base(object):
 	"""docstring for Base"""
@@ -48,7 +52,6 @@ class Base(object):
 		height = window_size.get("height")
 		self.driver.swipe(width/2,height*3/4,width/2,height/4,500)
 
-
 	def swipe_Down(self):
 		window_size = self.driver.get_window_size()
 		width = window_size.get("width")
@@ -66,3 +69,13 @@ class Base(object):
 		width = window_size.get("width")
 		height = window_size.get("height")
 		self.driver.swipe(width*4/5,height/2,width/5,height/2,500)
+
+	#dr_ 封装系统按钮键
+	def dr_back(self):
+		self.driver.keyevent(KeyValue.KEYCODE_BACK)
+
+	def dr_home(self):
+		self.driver.keyevent(KeyValue.KEYCODE_HOME)
+
+	def dr_menu(self):
+		self.driver.keyevent(KeyValue.KEYCODE_MENU)
