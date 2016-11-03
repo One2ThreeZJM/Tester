@@ -4,10 +4,12 @@ import sys
 sys.path.append("..")
 from selenium.webdriver.support.ui import WebDriverWait
 from common import KeyValue
-# print(KeyValue.KEYCODE_BACK)
+from appium import webdriver
+
 
 class Base(object):
-	"""docstring for Base"""
+	
+
 	def __init__(self, appium_driver):
 		self.driver = appium_driver
 
@@ -19,13 +21,16 @@ class Base(object):
 		except Exception as e:
 			print(u"%s 页面中未能找到 %s 元素" %(self,loc))
 
-	def find_elements(self):
+	def find_elements(self,loc):
 		'''封装一组元素定位方法'''
 		try:
 			if len(self.driver.find_elements(*loc)):
 				return self.driver.find_elements(*loc)
 		except Exception as e:
 			print(u"%s 页面中未能找到 %s 元素" %(self,loc))
+
+	def quit(self):
+		self.driver.quit()
 
 	def send_keys(self,loc,value,clear_first=True,click_first=True):
 		'''封装输入方法'''
@@ -38,8 +43,23 @@ class Base(object):
 
 		except AttributeError:
 			print(u"%s 页面中未能找到 %s 元素" %(self,loc))
-		
-	def clickBtn(self,loc,fin):
+	
+	def send_pwds(self,loc,value,clear_first=True,click_first=True):
+		'''对密码框输入进行处理，appium有bug'''
+		try:
+			if click_first:
+				self.find_element(loc).click()
+			if clear_first:
+				self.driver.keyevent(KeyValue.KEYCODE_MOVE_END)
+				for x in range(0,32):
+					self.driver.keyevent(KeyValue.KEYCODE_DEL)
+			
+			self.find_element(loc).send_keys(value)
+
+		except AttributeError:
+			print(u"%s 页面中未能找到 %s 元素" %(self,loc))
+
+	def clickBtn(self,loc):
 		'''封装点击方法'''
 		try:
 			self.find_element(loc).click()
