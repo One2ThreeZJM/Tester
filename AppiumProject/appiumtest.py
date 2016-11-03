@@ -1,7 +1,7 @@
 #coding=utf-8
 from appium import webdriver
 import time
-
+# aa
 # device=mr.waitForConnection(5,"047fa8290024760d")
 # device.startActivity(component="com.yidejia.app.mall/.ui.MainActivity")
 
