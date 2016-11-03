@@ -1,0 +1,68 @@
+__author__ = 'ZhangJianMing'
+
+from selenium.webdriver.support.ui import WebDriverWait
+
+class Base(object):
+	"""docstring for Base"""
+	def __init__(self, appium_driver):
+		self.driver = appium_driver
+
+	def find_element(self,loc):
+		'''封装单个元素定位方法'''
+		try:
+			WebDriverWait(self.driver,15.).until(lambda driver:driver.find_element(*loc).is_displayed())
+			return self.driver.find_element(*loc)
+		except Exception as e:
+			print(u"%s 页面中未能找到 %s 元素" %(self,loc))
+
+	def find_elements(self):
+		'''封装一组元素定位方法'''
+		try:
+			if len(self.driver.find_elements(*loc)):
+				return self.driver.find_elements(*loc)
+		except Exception as e:
+			print(u"%s 页面中未能找到 %s 元素" %(self,loc))
+
+	def send_keys(self,loc,value,clear_first=True,click_first=True):
+		'''封装输入方法'''
+		try:
+			if click_first:
+				self.find_element(loc).click()
+			if clear_first:
+				self.find_element(loc).clear()
+			self.find_element(loc).send_keys(value)
+
+		except AttributeError:
+			print(u"%s 页面中未能找到 %s 元素" %(self,loc))
+		
+	def clickBtn(self,loc,fin):
+		'''封装点击方法'''
+		try:
+			self.find_element(loc).click()
+		except AttributeError:
+			print(u"%s 页面中未能找到 %s 元素" %(self,loc))
+
+	def swipe_Up(self):
+		window_size = self.driver.get_window_size()
+		width = window_size.get("width")
+		height = window_size.get("height")
+		self.driver.swipe(width/2,height*3/4,width/2,height/4,500)
+
+
+	def swipe_Down(self):
+		window_size = self.driver.get_window_size()
+		width = window_size.get("width")
+		height = window_size.get("height")
+		self.driver.swipe(width/2,height/4,width/2,height*3/4,500)
+
+	def swipe_Left(self):
+		window_size = self.driver.get_window_size()
+		width = window_size.get("width")
+		height = window_size.get("height")
+		self.driver.swipe(width/4,height/2,width*3/4,height/2,500)
+
+	def swipe_Rigth(self):
+		window_size = self.driver.get_window_size()
+		width = window_size.get("width")
+		height = window_size.get("height")
+		self.driver.swipe(width*4/5,height/2,width/5,height/2,500)
