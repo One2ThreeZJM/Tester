@@ -97,3 +97,5 @@ class Base(object):
 
 	def dr_menu(self):
 		self.driver.keyevent(KeyValue.KEYCODE_MENU)
+
+	
