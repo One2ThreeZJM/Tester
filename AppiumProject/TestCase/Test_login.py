@@ -9,7 +9,7 @@ import time
 
 
 class Login(unittest.TestCase):
-	"""docstring for Login"""
+	"""测试登录失败情况"""
 	def setUp(self):
 		desired_caps = {}
 		desired_caps['device'] = 'android'
@@ -18,6 +18,7 @@ class Login(unittest.TestCase):
 		desired_caps['deviceName'] = '255f4e4c'
 		desired_caps['appPackage'] = 'com.yidejia.app.mall'
 		desired_caps['appActivity'] = 'com.yidejia.app.mall.ui.WelcomeActivity'
+		
 		# desired_caps['deviceName'] = 'emulator-5554'
 		# desired_caps['appPackage'] = 'com.yidejia.teacher'
 		# desired_caps['appActivity'] = '.ui.MainActivity'
@@ -46,7 +47,5 @@ class Login(unittest.TestCase):
 
 	def tearDown(self):
 		# self.lp.quit()
-		pass
+		print('test_login_fail_tearDown')
 
-if __name__ == '__main__':
-	unittest.main()
