@@ -18,6 +18,7 @@ class Base(object):
 			return self.driver.find_element(*loc)
 		except Exception as e:
 			print(u"%s 页面中未能找到 %s 元素" %(self,loc))
+			return False
 
 	def find_elements(self,loc):
 		'''封装一组元素定位方法'''
@@ -26,6 +27,7 @@ class Base(object):
 				return self.driver.find_elements(*loc)
 		except Exception as e:
 			print(u"%s 页面中未能找到 %s 元素" %(self,loc))
+			return False
 
 	def quit(self):
 		self.driver.quit()

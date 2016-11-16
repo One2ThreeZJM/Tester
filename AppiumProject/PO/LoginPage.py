@@ -25,7 +25,10 @@ class LoginPage(Base):
 		# print('跳转到：'+self.page_title()+'页面')
 
 	def page_title(self):
-		return self.find_element(self.title_loc).text
+		if self.find_element(self.title_loc):
+			return self.find_element(self.title_loc).text
+		else:
+			return 'NotFound'
 
 	def input_account(self,account):
 		self.send_keys(self.edt_account_loc,account,click_first=False)
