@@ -1,6 +1,6 @@
 __author__ = 'ZhangJianMing'
 
-import sys
+import sys,time,os
 sys.path.append("..")
 from selenium.webdriver.support.ui import WebDriverWait
 from common import KeyValue
@@ -100,4 +100,17 @@ class Base(object):
 	def dr_menu(self):
 		self.driver.keyevent(KeyValue.KEYCODE_MENU)
 
-	
+	def take_Shot(self,name):
+		day = time.strftime('%Y-%m-%d', time.localtime(time.time()))
+		fp = "..\\Result\\" + day
+		tm = time.strftime('%Y-%m-%d-%H_%M_%S', time.localtime(time.time()))
+		type = '.png'
+		
+		filename = ''
+		if os.path.exists(fp):
+			filename = fp+"\\" + tm +'_'+ name + type
+		else:
+			os.makedirs(fp)
+			filename = fp+"\\" + tm +'_'+ name + type
+		
+		self.driver.save_screenshot(filename)	
