@@ -14,8 +14,9 @@ class Login(unittest.TestCase):
 		desired_caps = {}
 		desired_caps['device'] = 'android'
 		desired_caps['platformName'] = 'android'
-		desired_caps['platformVersion'] = '6.0.1'
-		desired_caps['deviceName'] = '255f4e4c'
+		desired_caps['platformVersion'] = '6.0'
+		# desired_caps['deviceName'] = '255f4e4c'
+		desired_caps['deviceName'] = 'emulator-5554'
 		desired_caps['appPackage'] = 'com.yidejia.app.mall'
 		desired_caps['appActivity'] = 'com.yidejia.app.mall.ui.WelcomeActivity'
 		
@@ -24,7 +25,7 @@ class Login(unittest.TestCase):
 		# desired_caps['appActivity'] = '.ui.MainActivity'
 		# desired_caps['appPackage'] = 'com.android.calculator2'
 		# desired_caps['appActivity'] = '.Calculator'	
-		# driver = webdriver.Remote('http://127.0.0.1:4723/wd/hub',desired_caps)
+		driver = webdriver.Remote('http://127.0.0.1:4723/wd/hub',desired_caps)
 		
 		time.sleep(5)
 		self.lp = LoginPage(driver)
