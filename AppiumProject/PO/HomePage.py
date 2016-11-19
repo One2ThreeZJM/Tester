@@ -7,8 +7,7 @@ import time
 
 class HomePage(Base):
 	"""docstring for HomePage"""	
-	# btn_user_loc = (By.CLASS_NAME,"android.widget.RelativeLayout")
-
+	
 	search_loc = (By.ID,"com.yidejia.app.mall:id/ivSearch")
 	mainphoto_loc =(By.ID,"com.yidejia.app.mall:id/ivNewsPhoto")
 	btn_home_loc = (By.CLASS_NAME,"android.widget.RelativeLayout")
@@ -20,6 +19,8 @@ class HomePage(Base):
 	btn_share_qzone = (By.ID,"com.yidejia.app.mall:id/tv_share_app_qzone")
 	btn_share_wechat_moments = (By.ID,"com.yidejia.app.mall:id/tv_share_app_wechat_moments")
 
+	edt_search = (By.ID,"com.yidejia.app.mall:id/edt_search")
+	btn_toSearch_loc = (By.ID,"com.yidejia.app.mall:id/tv_search")
 
 	def click_home(self):
 		self.find_elements(self.btn_home_loc)[-4].click()
@@ -46,7 +47,13 @@ class HomePage(Base):
 		self.clickBtn(self.btn_share_qzone)
 
 	def click_wechatwechat_moments(self):
-		self.clickBtn(self.btn_share_wechat_moments)		
+		self.clickBtn(self.btn_share_wechat_moments)
+
+	def click_toSearch(self):
+		self.clickBtn(self.btn_toSearch_loc)
+
+	def input_search(self,text):
+		self.send_keys(self.edt_search,text)
 
 
 

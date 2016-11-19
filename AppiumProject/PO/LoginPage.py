@@ -18,6 +18,13 @@ class LoginPage(Base):
 	
 	btn_user_loc = (By.CLASS_NAME,"android.widget.RelativeLayout")
 	
+	Avatar_loc = (By.ID,"com.yidejia.app.mall:id/ci_avatar")
+	btn_login_out_loc = (By.ID,"com.yidejia.app.mall:id/tv_logout")
+
+	btn_loginout_commit_loc = (By.ID,"com.yidejia.app.mall:id/md_buttonDefaultPositive")
+	btn_lgoinout_cancel_loc = (By.ID,"com.yidejia.app.mall:id/md_buttonDefaultNegative")
+	title_userinfo_loc = (By.ID,"com.yidejia.app.mall:id/tv_toolbar_title")
+	
 	def click_user(self):
 		'''应用启动默认在首页位置，需要点击用户按钮才到登录页面'''
 		# print('点击个人信息按钮')
@@ -28,13 +35,13 @@ class LoginPage(Base):
 		if self.find_element(self.title_loc):
 			return self.find_element(self.title_loc).text
 		else:
-			return 'NotFound'
+			return False
 
 	def input_account(self,account):
-		self.send_keys(self.edt_account_loc,account,click_first=False)
+		self.send_keys(self.edt_account_loc,account)
 
 	def input_password(self,password):
-		self.send_keys(self.edt_pwd_loc,password,click_first=False)
+		self.send_pwds(self.edt_pwd_loc,password)
 
 	def click_toggle(self):
 		self.clickBtn(self.btn_toggle_loc)
@@ -50,8 +57,21 @@ class LoginPage(Base):
 
 	def click_regist(self):
 		self.clickBtn(self.btn_regist_loc)
-	
-		# 测试登录判断：输入不符合逻辑的account，能不能按登录键
-		# 输入账号、密码。是否可以跳转。判断页面是否跳转、或者按钮能不能按
-		# self.quit()
+
+	def isLogin(self):
+		if self.find_element(self.Avatar_loc):
+			return True
+		else:
+			return False
+
+	def login_out(self):
+		self.clickBtn(self.Avatar_loc)
+		self.find_element(self.title_userinfo_loc)
+		self.swipe_Up()
+		self.clickBtn(self.btn_login_out_loc)
+		self.clickBtn(self.btn_loginout_commit_loc)
+
+
+
+
 
