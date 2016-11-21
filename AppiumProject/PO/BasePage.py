@@ -18,7 +18,7 @@ class Base(object):
 			return self.driver.find_element(*loc)
 		except Exception as e:
 			print(u"%s 页面中未能找到 %s 元素" %(self,loc))
-			return False
+			
 
 	def find_elements(self,loc):
 		'''封装一组元素定位方法'''
@@ -27,7 +27,7 @@ class Base(object):
 				return self.driver.find_elements(*loc)
 		except Exception as e:
 			print(u"%s 页面中未能找到 %s 元素" %(self,loc))
-			return False
+			
 
 	def quit(self):
 		self.driver.quit()
@@ -40,6 +40,7 @@ class Base(object):
 			if clear_first:
 				self.find_element(loc).clear()
 			self.find_element(loc).send_keys(value)
+			# self.find_element(loc).set_value(value)
 
 		except AttributeError:
 			print(u"%s 页面中未能找到 %s 元素" %(self,loc))
@@ -55,6 +56,7 @@ class Base(object):
 					self.driver.keyevent(KeyValue.KEYCODE_DEL)
 			
 			self.find_element(loc).send_keys(value)
+			# self.find_element(loc).set_value(value)
 
 		except AttributeError:
 			print(u"%s 页面中未能找到 %s 元素" %(self,loc))
@@ -114,3 +116,34 @@ class Base(object):
 			filename = fp+"\\" + tm +'_'+ name + type
 		
 		self.driver.save_screenshot(filename)	
+
+# [
+# 'ACCESSIBILITY_ID', 
+# 'ANDROID_UIAUTOMATOR', 
+# 'CLASS_NAME', 
+# 'CSS_SELECTOR', 
+# 'ID', 
+# 'IOS_UIAUTOMATION', 
+# 'LINK_TEXT', 
+# 'NAME', 
+# 'PARTIAL_LINK_TEXT', 
+# 'TAG_NAME', 
+# 'XPATH'
+# ]
+
+# [ 'clear', 'click', 'find_element', 'find_element_by_accessibility_id',
+# 'find_element_by_android_uiautomator', 'find_element_by_class_name', 
+# 'find_element_by_css_selector', 'find_element_by_id', 'find_element_by_ios_uiautomation', 
+# 'find_element_by_link_text', 'find_element_by_name', 'find_element_by_partial_link_text', 
+# 'find_element_by_tag_name', 'find_element_by_xpath', 'find_elements', 
+# 'find_elements_by_accessibility_id', 'find_elements_by_android_uiautomator', 
+# 'find_elements_by_class_name', 'find_elements_by_css_selector', 
+# 'find_elements_by_id', 'find_elements_by_ios_uiautomation', 
+# 'find_elements_by_link_text', 'find_elements_by_name', 
+# 'find_elements_by_partial_link_text', 
+# 'find_elements_by_tag_name', 
+# 'find_elements_by_xpath', 'get_attribute', 'id', 'is_displayed', 'is_enabled', 
+# 'is_selected', 'location', 'location_in_view', 
+# 'location_once_scrolled_into_view', 'parent', 'rect', 'screenshot', 
+# 'screenshot_as_base64', 'screenshot_as_png', 'send_keys', 'set_text', 'set_value', 
+# 'size', 'submit', 'tag_name', 'text', 'value_of_css_property']
