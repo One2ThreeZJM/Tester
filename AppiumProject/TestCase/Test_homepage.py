@@ -49,7 +49,7 @@ class Take_homepage(unittest.TestCase):
 		for x in self.hp.find_elements(self.hp.text_loc):
 			templist.append(x.get_attribute('name'))
 		
-		#断言是否正常加载
+		##断言是否正常加载
 		self.assertTrue(temptitle in templist,msg = '找不到标题')
 
 		self.hp.click_share()
