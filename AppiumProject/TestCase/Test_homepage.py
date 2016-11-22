@@ -41,7 +41,7 @@ class Take_homepage(unittest.TestCase):
 	def test_mainphoto(self):
 		'''进入文件及分享页面'''
 		
-		# temptitle = self.hp.returnContent()
+		temptitle = self.hp.returnContent()
 		print('主页标题：',temptitle)
 		self.hp.click_mainphoto()
 		#保存标题temptitle，跳转后判断contecnt_desc元素是否存在

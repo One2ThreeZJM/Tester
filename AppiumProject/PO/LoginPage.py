@@ -23,7 +23,7 @@ class LoginPage(Base):
 
 	btn_loginout_commit_loc = (By.ID,"com.yidejia.app.mall:id/md_buttonDefaultPositive")
 	btn_lgoinout_cancel_loc = (By.ID,"com.yidejia.app.mall:id/md_buttonDefaultNegative")
-	title_userinfo_loc = (By.ID,"com.yidejia.app.mall:id/tv_toolbar_title")
+	# title_userinfo_loc = (By.ID,"com.yidejia.app.mall:id/tv_toolbar_title")
 	
 	def click_user(self):
 		'''应用启动默认在首页位置，需要点击用户按钮才到登录页面'''
