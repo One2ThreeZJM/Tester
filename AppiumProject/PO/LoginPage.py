@@ -66,7 +66,7 @@ class LoginPage(Base):
 
 	def login_out(self):
 		self.clickBtn(self.Avatar_loc)
-		self.find_element(self.title_userinfo_loc)
+		self.find_element(self.title_loc)
 		self.swipe_Up()
 		self.clickBtn(self.btn_login_out_loc)
 		self.clickBtn(self.btn_loginout_commit_loc)
